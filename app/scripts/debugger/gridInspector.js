@@ -1,4 +1,4 @@
-var gridInspector;
+var gridInspector = {};
 
 gridInspector.init = function(){};
 

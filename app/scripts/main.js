@@ -45,7 +45,7 @@
 
 		// Load debugger components and set up debugger panel commands
 		['gridInspector'].forEach(function(cmd) {
-			debuggerPanel.commands[cmd] = require('./app/scripts/debugger/' + cmd +'.js');
+			debuggerPanel.commands[cmd] = require('./debugger/gridInspector.js');
 			debuggerPanel.commands[cmd].trigger = document.querySelector('#' + cmd);
 			debuggerPanel.commands[cmd].trigger.addEventListener('click', debuggerPanel.commands[cmd].init);
 		});
