@@ -5,17 +5,23 @@
 	var debuggerEnabled = true;
 	var debuggerToggle;
 	var debuggerToggleStateText;
+	var debuggerPanel = {};
+	debuggerPanel.commands = {};
+	debuggerPanel.commands.gridInspector = {};
 	var startButton;
 
 	// Wait for the DOM to be ready
 	document.addEventListener('DOMContentLoaded', init);
 
 	function init() {
-		// Sets up event handlers, initializes element variables, etc.
+		// Initialize element variables
 		startButton = document.querySelector('#start');
 		debuggerToggle = document.querySelector('#debugger');
 		debuggerToggleStateText = document.querySelector('#debuggerState');
+		debuggerPanel.panel = document.querySelector('#debuggerPanel');
+		debuggerPanel.render = document.querySelector('#debuggerRender');
 
+		// Set up event handlers
 		startButton.addEventListener('click', initGame);
 
 		debuggerToggle.addEventListener('click', function(event) {
@@ -23,22 +29,33 @@
 			case 'ON':
 				debuggerToggleStateText.innerText = 'OFF';
 				debuggerEnabled = false;
+				debuggerPanel.panel.setAttribute('hidden', '');
 				console.log('Debugger disabled.');
 				break;
 			case 'OFF':
 				debuggerToggleStateText.innerText = 'ON';
 				debuggerEnabled = true;
+				debuggerPanel.panel.removeAttribute('hidden');
 				console.log('Debugger enabled.');
 				break;
 			default:
 				throw new Error('Debugger button is in an unknown state!');
 			}
 		});
+
+		// Load debugger components and set up debugger panel commands
+		['gridInspector'].forEach(function(cmd) {
+			debuggerPanel.commands[cmd] = require('./app/scripts/debugger/' + cmd +'.js');
+			debuggerPanel.commands[cmd].trigger = document.querySelector('#' + cmd);
+			debuggerPanel.commands[cmd].trigger.addEventListener('click', debuggerPanel.commands[cmd].init);
+		});
 	}
 
 	function initGame () {
 		var BABYLON = require('babylonjs/babylon.js');
 
+		startButton.setAttribute('disabled', '');
+		
 		console.log("Hello BabylonJS");
 		
 		// Get the canvas element from our HTML above
