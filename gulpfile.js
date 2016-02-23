@@ -29,7 +29,8 @@ gulp.task('js', function () {
 	var b = browserify({
 		entries: 'app/scripts/main.js',
 		debug: true,
-		noParse: [require.resolve('babylonjs')]
+		noParse: [require.resolve('babylonjs')],
+		transform: ['require-globify']
 	});
 	return b.bundle()
 	        .pipe(source('app.js'))

@@ -44,10 +44,13 @@
 		});
 
 		// Load debugger components and set up debugger panel commands
-		['gridInspector'].forEach(function(cmd) {
-			debuggerPanel.commands[cmd] = require('./debugger/gridInspector.js');
+		var debuggerComponents = require('./debugger/*.js', {mode: 'list'});
+		debuggerComponents.forEach(function(component) {
+			var cmd = component.name.split('/')[component.name.split('/').length - 1].split('.')[0];
+			debuggerPanel.commands[cmd] = component.module;
 			debuggerPanel.commands[cmd].trigger = document.querySelector('#' + cmd);
 			debuggerPanel.commands[cmd].trigger.addEventListener('click', debuggerPanel.commands[cmd].init);
+			console.log('Loaded debugger component: ' + cmd);
 		});
 	}
 
