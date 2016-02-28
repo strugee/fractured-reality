@@ -1,7 +1,7 @@
 var stats = {};
 
 stats.init = function(view) {
-	view.innerHTML = '';
+	view.innerHTML = 'No statistics to show.';
 };
 
 module.exports = stats;
