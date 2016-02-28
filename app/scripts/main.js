@@ -21,6 +21,9 @@
 		debuggerPanel.panel = document.querySelector('#debuggerPanel');
 		debuggerPanel.render = document.querySelector('#debuggerRender');
 
+		// Reset button state
+		startButton.removeAttribute('disabled');
+
 		// Set up event handlers
 		startButton.addEventListener('click', initGame);
 
@@ -49,7 +52,19 @@
 			var cmd = component.name.split('/')[component.name.split('/').length - 1].split('.')[0];
 			debuggerPanel.commands[cmd] = component.module;
 			debuggerPanel.commands[cmd].trigger = document.querySelector('#' + cmd);
-			debuggerPanel.commands[cmd].trigger.addEventListener('click', debuggerPanel.commands[cmd].init);
+			debuggerPanel.commands[cmd].trigger.removeAttribute('disabled', '');
+			debuggerPanel.commands[cmd].trigger.addEventListener('click', function(event) {
+				if (typeof debuggerPanel.commands.current == 'object') {
+					// If there's a current command, make that button active
+					debuggerPanel.commands.current.trigger.removeAttribute('disabled');
+				}
+
+				// Disable the selected button and set the current command
+				this.setAttribute('disabled', '');
+				debuggerPanel.commands.current = debuggerPanel.commands[cmd];
+				
+				debuggerPanel.commands[cmd].init(debuggerPanel.render);
+			});
 			console.log('Loaded debugger component: ' + cmd);
 		});
 	}
