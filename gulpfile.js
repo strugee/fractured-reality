@@ -5,7 +5,7 @@ var gulp = require('gulp'),
     useref = require('gulp-useref'),
     gulpif = require('gulp-if'),
     uglify = require('gulp-uglify'),
-    minifyCss = require('gulp-minify-css'),
+    stylus = require('gulp-stylus'),
     merge = require('merge-stream'),
     browserify = require('browserify'),
     source = require('vinyl-source-stream'),
@@ -20,8 +20,10 @@ gulp.task('html', function() {
 });
 
 gulp.task('css', function() {
-	return gulp.src('app/css/*.css')
-	           .pipe(gulpif(isProduction, minifyCss()))
+	return gulp.src('app/styles/*.styl')
+	           .pipe(sourcemaps.init())
+	           .pipe(stylus())
+	           .pipe(sourcemaps.write())
 	           .pipe(gulp.dest('dist/css'));
 });
 
