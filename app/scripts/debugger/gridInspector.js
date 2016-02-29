@@ -9,7 +9,7 @@ gridInspector.init = function(view) {
 		
 		for (var j = 0; j < 12; j++) {
 			var td = document.createElement('td');
-			var text = document.createTextNode('a');
+			var text = document.createTextNode(' ');
 			td.appendChild(text);
 			td.classList.add('gridInspector-cell');
 			tr.appendChild(td);
