@@ -5,4 +5,8 @@ gridInspector.init = function(view) {
 	view.innerHTML = 'Inspecting the grid!';
 };
 
+gridInspector.teardown = function(view) {
+	view.innerHTML = '';
+};
+
 module.exports = gridInspector;

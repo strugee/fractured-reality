@@ -54,9 +54,11 @@
 			debuggerPanel.commands[cmd].trigger = document.querySelector('#' + cmd);
 			debuggerPanel.commands[cmd].trigger.removeAttribute('disabled', '');
 			debuggerPanel.commands[cmd].trigger.addEventListener('click', function(event) {
+				// If there's a current command...
 				if (typeof debuggerPanel.commands.current == 'object') {
-					// If there's a current command, make that button active
+					// ...make that button active and call the old command's teardown
 					debuggerPanel.commands.current.trigger.removeAttribute('disabled');
+					debuggerPanel.commands.current.teardown(debuggerPanel.render);
 				}
 
 				// Disable the selected button and set the current command
