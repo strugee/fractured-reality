@@ -1,4 +1,4 @@
-var gmb = {};
+var util = {};
 
 var seed = require('./seed.js')();
 var Megabiome = require('./types/megabiome.js');
@@ -9,7 +9,7 @@ function getRandom(x, y, desc) {
 	return random(seed + '.' + x + '.' + y + desc );
 }
 
-gmb.megabiome = function(x, y) {
+util.megabiome = function(x, y) {
 	// Modulo 10 because there's a 1 in 10 chance of physics not being required
 	var hasPhysics = Math.floor(getRandom(x, y, 'physics') * 10) % 10;
 	assert(hasPhysics <= 9);
@@ -23,8 +23,8 @@ gmb.megabiome = function(x, y) {
 	console.log('Creating new megabiome at (' + x + ', ' + y + '): ' + megabiome);
 };
 
-gmb.megabiomeType = function() {
+util.megabiomeType = function() {
 
 };
 
-module.exports = gmb;
+module.exports = util;
