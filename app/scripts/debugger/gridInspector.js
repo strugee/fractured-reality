@@ -1,3 +1,5 @@
+'use strict';
+
 var gridInspector = {};
 
 gridInspector.init = function(view) {
