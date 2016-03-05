@@ -12,14 +12,19 @@ function getRandom(x, y, desc) {
 
 util.megabiome = function(x, y) {
 	// Megabiome side size (max 15)
-	var sideSize = Math.floor(getRandom(x, y, 'physics') * 1000) % 15;
+	var sideSize = Math.floor(getRandom(x, y, 'size') * 1000) % 15;
 
 	// Modulo 10 because there's a 1 in 10 chance of physics not being required
-	var hasPhysics = Math.floor(getRandom(x, y, 'physics') * 1000) % 10;
-	hasPhysics = hasPhysics === 0 ? false : true;
+	var physicsRequired = Math.floor(getRandom(x, y, 'physics') * 1000) % 10;
+	physicsRequired = physicsRequired === 0 ? false : true;
+
+	// Modulo 3 because magic is quite common, so there's only a 1 in 3 chance it's disallowed
+	var magicAllowed = Math.floor(getRandom(x, y, 'magic') * 1000) % 3;
+	magicAllowed = magicAllowed === 0 ? false : true;
 
 	var megabiome = new Megabiome(sideSize, {
-		physics: hasPhysics
+		physics: physicsRequired,
+		magic: magicAllowed
 	});
 
 	console.log('Creating new megabiome at (' + x + ', ' + y + '): ' + JSON.stringify(megabiome));
