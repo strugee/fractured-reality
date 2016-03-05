@@ -73,6 +73,8 @@
 
 	function initGame () {
 		var BABYLON = require('babylonjs/babylon.js');
+		var megabiomeUtil = require('./megabiomeUtil.js');
+		var zerozero = megabiomeUtil.megabiome(0, 0);
 
 		startButton.setAttribute('disabled', '');
 		
