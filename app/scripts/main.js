@@ -28,15 +28,15 @@
 		startButton.addEventListener('click', initGame);
 
 		debuggerToggle.addEventListener('click', function(event) {
-			switch (debuggerToggleStateText.innerText) {
+			switch (debuggerToggleStateText.innerHTML) {
 			case 'ON':
-				debuggerToggleStateText.innerText = 'OFF';
+				debuggerToggleStateText.innerHTML = 'OFF';
 				debuggerEnabled = false;
 				debuggerPanel.panel.setAttribute('hidden', '');
 				console.log('Debugger disabled.');
 				break;
 			case 'OFF':
-				debuggerToggleStateText.innerText = 'ON';
+				debuggerToggleStateText.innerHTML = 'ON';
 				debuggerEnabled = true;
 				debuggerPanel.panel.removeAttribute('hidden');
 				console.log('Debugger enabled.');
