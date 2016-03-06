@@ -18,7 +18,7 @@ util.megabiome = function(x, y) {
 	var physicsRequired = Math.floor(getRandom(x, y, 'physics') * 1000) % 10;
 	physicsRequired = physicsRequired === 0 ? false : true;
 
-	// Modulo 3 because magic is quite common, so there's only a 1 in 3 chance it's disallowed
+	// Magic is quite common, so there's only a 1 in 3 chance that it's disallowed
 	var magicAllowed = Math.floor(getRandom(x, y, 'magic') * 1000) % 3;
 	magicAllowed = magicAllowed === 0 ? false : true;
 
