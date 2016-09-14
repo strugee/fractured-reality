@@ -1,16 +1,10 @@
 var util = {};
 
-var seed = require('./seed.js')();
+var getRandom = require('./getRandom.js');
 var Megabiome = require('./types/megabiome.js');
-var random = require('seed-random');
 var assert = require('assert');
 
 var megabiomeCache = new Map();
-
-function getRandom(x, y, desc) {
-	// This seems to be a bug in Browserify or one of its plugins
-	return random()(seed + '.' + x + '.' + y + desc);
-}
 
 util.megabiome = function(x, y) {
 	if (megabiomeCache[x + ',' + y]) {
