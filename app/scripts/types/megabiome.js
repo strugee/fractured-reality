@@ -12,7 +12,7 @@ module.exports = class Megabiome {
 		var biomes = this.biomes;
 		biomes.forEach(function(x) {
 			// If the array is sparse it won't properly iterate
-			_.fill(x, {});
+			_.fill(x, null);
 			x.forEach(function(y) {
 				y = new Biome({
 					type: 'generic'
