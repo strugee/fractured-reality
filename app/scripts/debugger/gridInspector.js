@@ -11,15 +11,18 @@ gridInspector.init = function(view) {
 	var table = document.createElement('table');
 
 	// x
-	for (var i = 0; i < megabiome.biomes.length; i++) {
+	for (var x = 0; x < megabiome.biomes.length; x++) {
 		var tr = document.createElement('tr');
 
 		// y
-		for (var j = 0; j < megabiome.biomes[0].length; j++) {
+		for (var y = 0; y < megabiome.biomes[0].length; y++) {
+			var biome = megabiome.biomes[x][y];
+
 			var td = document.createElement('td');
 			var text = document.createTextNode(' ');
 			td.appendChild(text);
 			td.classList.add('gridInspector-cell');
+			td.style = 'color: ' + biome.type.color;
 			tr.appendChild(td);
 		}
 		
