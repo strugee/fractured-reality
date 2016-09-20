@@ -6,3 +6,4 @@ function getRandom(x, y, desc) {
 	return random()(seed + '.' + x + '.' + y + desc);
 }
 
+module.exports = getRandom;

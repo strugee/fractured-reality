@@ -8,8 +8,9 @@ var megabiomeCache = new Map();
 
 util.megabiome = function(x, y) {
 	if (megabiomeCache[x + ',' + y]) {
+		var megabiome = megabiomeCache[x + ',' + y];
 		console.log('Returning cached megabiome at (' + x + ', ' + y + '): ' + JSON.stringify(megabiome));
-		return megabiomeCache[x + ',' + y];
+		return megabiome;
 	} else {
 		// Megabiome side size (max 15)
 		var sideSize = Math.floor(getRandom(x, y, 'size') * 1000) % 15;
