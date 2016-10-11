@@ -7,9 +7,12 @@ var assert = require('assert');
 var megabiomeCache = new Map();
 
 util.megabiome = function(x, y) {
+	var megabiome;
+
 	if (megabiomeCache[x + ',' + y]) {
-		var megabiome = megabiomeCache[x + ',' + y];
-		console.log('Returning cached megabiome at (' + x + ', ' + y + '): ' + JSON.stringify(megabiome));
+		megabiome = megabiomeCache[x + ',' + y];
+		console.log('Returning cached megabiome at (' + x + ', ' + y + '): ');
+		console.dir(megabiome);
 		return megabiome;
 	} else {
 		// Megabiome side size (max 15)
@@ -23,12 +26,13 @@ util.megabiome = function(x, y) {
 		var magicAllowed = Math.floor(getRandom(x, y, 'magic') * 1000) % 3;
 		magicAllowed = magicAllowed === 0 ? false : true;
 
-		var megabiome = new Megabiome(sideSize, {
+		megabiome = new Megabiome(sideSize, {
 			physics: physicsRequired,
 			magic: magicAllowed
 		});
 
-		console.log('Created new megabiome at (' + x + ', ' + y + '): ' + JSON.stringify(megabiome));
+		console.log('Created new megabiome at (' + x + ', ' + y + '): ');
+		console.dir(megabiome);
 
 		megabiomeCache[x + ',' + y] = megabiome;
 

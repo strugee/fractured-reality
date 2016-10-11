@@ -6,26 +6,27 @@ var biomeTypes = require('./biomeTypes.js');
 module.exports = class Megabiome {
 	constructor(sideLength, attributes) {
 		// Rows
-		this.biomes = new Array(sideLength);
+		var biomes = new Array(sideLength);
 
 		// Columns
-		_.fill(this.biomes, new Array(sideLength));
+		_.fill(biomes, new Array(sideLength));
 
-		var biomes = this.biomes;
 		for (var x in biomes) {
 			// If the array is sparse it won't properly iterate
 			_.fill(biomes[x], null);
-			for (var y in x) {
+			for (var y in biomes[x]) {
 				console.log('Initializing at: ' + x + ', ' + y);
-				var type = biomeTypes[Math.floor(getRandom(x, y, 'biome type') * 1000) % biomeTypes.length - 1];
-				biomes[x][y] = new Biome({
+				var type = biomeTypes[Math.floor(getRandom(x, y, 'biome type') * 1000) % biomeTypes.length];
+				var biome = new Biome({
 					"type": type
 				});
+				biomes[x][y] = biome;
 
-				console.log('Initialized biome: ' + JSON.stringify(biomes[x][y]));
+				console.log('Initialized biome: ' + JSON.stringify(biome));
 			};
 		};
 
+		this.biomes = biomes;
 		this.physics = attributes.physics;
 	}
 };
