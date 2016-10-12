@@ -9,8 +9,9 @@ var megabiomeCache = new Map();
 util.megabiome = function(x, y) {
 	var megabiome;
 
-	if (megabiomeCache[x + ',' + y]) {
-		megabiome = megabiomeCache[x + ',' + y];
+	if (megabiomeCache.get(x + ',' + y)) {
+		megabiome = megabiomeCache.get(x + ',' + y);
+
 		console.log('Returning cached megabiome at (' + x + ', ' + y + '): ');
 		console.dir(megabiome);
 		return megabiome;
@@ -34,7 +35,7 @@ util.megabiome = function(x, y) {
 		console.log('Created new megabiome at (' + x + ', ' + y + '): ');
 		console.dir(megabiome);
 
-		megabiomeCache[x + ',' + y] = megabiome;
+		megabiomeCache.set(x + ',' + y, megabiome);
 
 		return megabiome;
 	}
