@@ -5,6 +5,8 @@ var biomeTypes = require('./biomeTypes.js');
 
 module.exports = class Megabiome {
 	constructor(sideLength, attributes) {
+		console.groupCollapsed('Megabiome creation');
+
 		// Create rows
 		var biomes = new Array(sideLength);
 
@@ -32,5 +34,7 @@ module.exports = class Megabiome {
 
 		this.biomes = biomes;
 		this.physics = attributes.physics;
+
+		console.groupEnd();
 	}
 };
