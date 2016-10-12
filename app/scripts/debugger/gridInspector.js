@@ -4,9 +4,12 @@ var mb = require('../megabiomeUtil.js');
 
 var gridInspector = {};
 
-gridInspector.init = function(view) {
-	// TODO: this assumes 0, 0
-	var megabiome = mb.megabiome(0, 0);
+var table;
+var viewX = 0;
+var viewY = 0;
+
+function formatMegabiome(megaX, megaY) {
+	var megabiome = mb.megabiome(megaX, megaY);
 
 	var table = document.createElement('table');
 
@@ -30,8 +33,41 @@ gridInspector.init = function(view) {
 		
 		table.appendChild(tr);
 	}
-	
+
+	return table;
+}
+
+function updateTable(view) {
+		var oldTable = table;
+		table = formatMegabiome(viewX, viewY);
+
+		view.replaceChild(table, oldTable);
+};
+
+gridInspector.init = function(view) {
+	view.id = 'gridInspector-panel';
+
+	table = formatMegabiome(0, 0);
+
+	var left = document.createElement('button');
+	left.appendChild(document.createTextNode('<'));
+	left.addEventListener('click', function(event) {
+		viewX--;
+
+		updateTable(view);
+	});
+	view.appendChild(left);
+
 	view.appendChild(table);
+
+	var right = document.createElement('button');
+	right.appendChild(document.createTextNode('>'));
+	right.addEventListener('click', function(event) {
+		viewX++;
+
+		updateTable(view);
+	});
+	view.appendChild(right);
 };
 
 gridInspector.teardown = function(view) {
