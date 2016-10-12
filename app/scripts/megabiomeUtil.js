@@ -14,6 +14,7 @@ util.megabiome = function(x, y) {
 
 		console.log('Returning cached megabiome at (' + x + ', ' + y + '): ');
 		console.dir(megabiome);
+
 		return megabiome;
 	} else {
 		// Megabiome side size (max 15)
