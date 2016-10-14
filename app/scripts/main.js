@@ -104,6 +104,12 @@
 			// This attaches the camera to the canvas
 			camera.attachControl(canvas, false);
 
+			// Push WASD keys to camera control key arrays so they can be used for movement
+			camera.keysUp.push(87); // W
+			camera.keysDown.push(83); // S
+			camera.keysLeft.push(65); // A
+			camera.keysRight.push(68); // D
+			
 			// This creates a light, aiming 0,1,0 - to the sky.
 			var light = new BABYLON.HemisphericLight("light1", new BABYLON.Vector3(0, 1, 0), scene);
 
