@@ -1,3 +1,5 @@
+'use strict';
+
 var _ = require('lodash');
 var Biome = require('./biome.js');
 var getRandom = require('../getRandom.js');

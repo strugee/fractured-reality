@@ -1,3 +1,5 @@
+'use strict';
+
 var util = {};
 
 var seed = require('./seed.js')();

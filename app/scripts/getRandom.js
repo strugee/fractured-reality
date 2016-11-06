@@ -1,3 +1,5 @@
+'use strict';
+
 var seed = require('./seed.js')();
 var random = require('seed-random');
 

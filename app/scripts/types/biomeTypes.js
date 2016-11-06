@@ -1,3 +1,5 @@
+'use strict';
+
 // Note: color is used for the debugger
 
 var types = [

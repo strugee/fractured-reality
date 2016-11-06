@@ -1,3 +1,5 @@
+'use strict';
+
 var util = {};
 
 var getRandom = require('./getRandom.js');
