@@ -26,13 +26,13 @@ module.exports = class Megabiome {
 				console.log('Initializing at: ' + x + ', ' + y);
 				var type = biomeTypes[Math.floor(getRandom(x, y, 'biome type') * 1000) % biomeTypes.length];
 				var biome = new Biome({
-					"type": type
+					'type': type
 				});
 				biomes[x][y] = biome;
 
 				console.log('Initialized biome: ' + JSON.stringify(biome));
-			};
-		};
+			}
+		}
 
 		this.biomes = biomes;
 		this.physics = attributes.physics;

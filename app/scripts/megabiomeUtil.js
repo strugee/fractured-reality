@@ -4,7 +4,6 @@ var util = {};
 
 var getRandom = require('./getRandom.js');
 var Megabiome = require('./types/megabiome.js');
-var assert = require('assert');
 
 var megabiomeCache = new Map();
 
