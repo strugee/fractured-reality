@@ -42,7 +42,7 @@ function updateTable(view) {
 		table = formatMegabiome(viewX, viewY);
 
 		view.replaceChild(table, oldTable);
-};
+}
 
 gridInspector.init = function(view) {
 	view.id = 'gridInspector-panel';

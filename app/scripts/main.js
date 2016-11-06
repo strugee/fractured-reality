@@ -114,7 +114,7 @@
 			var light = new BABYLON.HemisphericLight("light1", new BABYLON.Vector3(0, 1, 0), scene);
 
 			// Dim the light a small amount
-			light.intensity = .5;
+			light.intensity = 0.5;
 
 			// Let's try our built-in 'sphere' shape. Params: name, subdivisions, size, scene
 			var sphere = BABYLON.Mesh.CreateSphere("sphere1", 16, 2, scene);
